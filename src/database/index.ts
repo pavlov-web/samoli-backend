@@ -1,18 +1,16 @@
-import { Knex, knex } from 'knex';
+import * as dotenv from 'dotenv';
+import { DataSource } from 'typeorm';
 
-export let db: Knex = null;
-
-export const createConnection = () => {
-  db = knex({
-    client: 'postgres',
-    connection: {
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      port: Number(process.env.DB_PORT),
-      host: process.env.DB_HOST,
-    },
-  });
-
-  return db;
-};
+dotenv.config();
+export const db = new DataSource({
+  type: 'postgres',
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS + '',
+  port: Number(process.env.DB_PORT),
+  host: process.env.DB_HOST,
+  entities: ['build/modules/**/*.entity.{ts,js}'],
+  logging: false,
+  synchronize: true,
+  dropSchema: true,
+});

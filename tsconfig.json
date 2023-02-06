@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "target": "ES2018",
     "lib": ["ES6"],
     "module": "NodeNext",
