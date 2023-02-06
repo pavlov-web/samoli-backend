@@ -4,7 +4,6 @@ import { Knex } from 'knex';
 
 import { createConnection } from '@/database';
 import { errorHandler } from '@/middleware/errorHandler';
-import { QueryBuilder } from '@/query-builder';
 import { router } from '@/router';
 
 dotenv.config();
@@ -14,12 +13,10 @@ class Bootstrap {
   public db: Knex<any, unknown[]>;
   public router: any;
   private contentTypeBuilder: App;
-  private queryBuilder: QueryBuilder;
 
   constructor() {
     this.app = express();
     this.db = createConnection();
-    this.queryBuilder = new QueryBuilder(this.db);
     this.router = router();
   }
 
