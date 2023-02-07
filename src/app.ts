@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express, Router } from 'express';
 
 import { db } from '@/database';
 import { errorHandler } from '@/middleware/errorHandler';
@@ -6,7 +6,7 @@ import { router } from '@/router';
 
 class Bootstrap {
   public app: Express;
-  public router: any;
+  public router: Router;
 
   constructor() {
     this.app = express();

@@ -11,6 +11,6 @@ export const db = new DataSource({
   host: process.env.DB_HOST,
   entities: ['build/modules/**/*.entity.{ts,js}'],
   logging: false,
-  synchronize: true,
-  dropSchema: true,
+  synchronize: false,
+  dropSchema: false,
 });
